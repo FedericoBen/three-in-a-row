@@ -4,14 +4,9 @@ export const logicGame = (board) =>
 const fullRow = (board) => board.some(allElementAreEqual);
 
 const fullColumn = (board) => {
-  const rowOne = board[0];
-  const rowTwo = board[1];
-  const rowThree = board[2];
-
-  const columnOne = [rowOne[0], rowTwo[0], rowThree[0]];
-  const columnTwo = [rowOne[1], rowTwo[1], rowThree[1]];
-  const columnThree = [rowOne[2], rowTwo[2], rowThree[2]];
-
+  const columnOne = [board[0][0], board[1][0],  board[2][0]];
+  const columnTwo = [board[0][1], board[1][1],  board[2][1]];
+  const columnThree = [board[0][2], board[1][2],  board[2][2]];
   return (
     allElementAreEqual(columnOne) ||
     allElementAreEqual(columnTwo) ||

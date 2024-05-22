@@ -40,12 +40,25 @@
 
   & .counter_victories {
     display: flex;
-    height: 40px;
+    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
+    column-gap: 8px;
     align-items: center;
-    padding-inline: 8px;
-    background-color: #3c5b6f;
+
+    & .option {
+      padding-inline: 8px;
+      background-color: #3c5b6f;
+      border-radius: 5px;
+
+      & .x_victories {
+        font-weight: bold;
+        color: #9dde8b;
+      }
+      & .y_victories {
+        font-weight: bold;
+        color: #ad88c6;
+      }
+    }
   }
 
   & .game_board {

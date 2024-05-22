@@ -4,8 +4,8 @@ import CardBoard from "../CardBoard/CardBoard";
 import { logicGame } from "../../utils/logicGame";
 import { VALUE_CARD } from "../../constants/valueCards";
 import ModalWinner from "../ModalWinner/ModalWinner";
-import useSound from 'use-sound';
-import pop from '../../assets/sounds/pop.mp3'
+import useSound from "use-sound";
+import pop from "../../assets/sounds/pop.mp3";
 
 const INITIAL_STATE = [
   [0, 0, 0],
@@ -31,6 +31,7 @@ const GameBoard = () => {
   });
 
   const selectCard = (i, j) => {
+    if (board[i][j] != 0) return;
     play();
     const newBoard = board.map((row, ib) =>
       ib != i ? [...row] : row.map((card, jb) => (jb != j ? card : turn))
@@ -74,7 +75,7 @@ const GameBoard = () => {
       ...boardMap[2],
     ].filter((card) => card.free);
     const numberMissingCards = previouslyBoardFree.length;
-    const random = getRandomIntInclusive(0, numberMissingCards-1);
+    const random = getRandomIntInclusive(0, numberMissingCards - 1);
     const [i, j] = previouslyBoardFree[random].position;
 
     selectCard(i, j);
@@ -105,9 +106,13 @@ const GameBoard = () => {
           </button>
         </div>
         <div className={styles.counter_victories}>
-          <h3 className={styles.x_victories}>X victories: {counter.x}</h3>
-          <h3 className={styles.y_victories}>O Victories: {counter.o}</h3>
-          <h3 className={styles.ties}>Ties: {counter.e}</h3>
+          <h3 className={styles.option}>
+            <span className={styles.x_victories}>x</span> Victories: {counter.x}
+          </h3>
+          <h3 className={styles.option}>
+            <span className={styles.y_victories}>o</span> Victories: {counter.o}
+          </h3>
+          <h3 className={styles.option}>Ties: {counter.e}</h3>
         </div>
         <div className={styles.game_board}>
           {board.map((row, i) => (
